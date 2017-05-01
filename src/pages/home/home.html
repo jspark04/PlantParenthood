@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="ppgreen">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>Plant Parenthood</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="presentPopover($event)">
+        <ion-icon name="ios-notifications" color="ppred"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Good morning, John!</h3>
+
+  <p>
+    You've been great at taking care of your plants this week. Congratulations!
+  </p>
+
+  <button ion-button (click)="getData()">GET</button>
+
+  <button ion-button secondary menuToggle>Toggle Menu</button>
+</ion-content>
