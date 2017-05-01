@@ -19,7 +19,23 @@
     You've been great at taking care of your plants this week. Congratulations!
   </p>
 
-  <button ion-button (click)="getData()">GET</button>
+  <p>
+    Dev testing section
+  </p>
+
+  <button ion-button (click)="getSensorData()">Get Sensor Data</button>
+  <button ion-button (click)="getPlantData()">Get Plant Data</button>
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
+
+  <ion-list>
+    <button ion-item *ngFor="let datapt of sensordata">
+      {{ datapt.SensorDataID }}
+    </button>
+  </ion-list>
+  <ion-list>
+    <button ion-item *ngFor="let datapt of plantdata">
+      {{ datapt.PlantName }}
+    </button>
+  </ion-list>
 </ion-content>

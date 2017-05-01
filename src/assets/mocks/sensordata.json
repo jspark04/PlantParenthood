@@ -1,0 +1,38 @@
+[
+  {
+    "SensorDataID": 1,
+    "CareInfoID": 1,
+    "CreatedDate": "2017-04-01T17:00:00",
+    "SoilMoisture": 30,
+    "Light": 60,
+    "Temperature": 50,
+    "Humidity": 10
+  },
+  {
+    "SensorDataID": 2,
+    "CareInfoID": 1,
+    "CreatedDate": "2017-04-01T17:00:10",
+    "SoilMoisture": 40,
+    "Light": 60,
+    "Temperature": 50,
+    "Humidity": 13
+  },
+  {
+    "SensorDataID": 3,
+    "CareInfoID": 1,
+    "CreatedDate": "2017-04-01T17:00:20",
+    "SoilMoisture": 60,
+    "Light": 65,
+    "Temperature": 50,
+    "Humidity": 15
+  },
+  {
+    "SensorDataID": 5,
+    "CareInfoID": 1,
+    "CreatedDate": "2017-04-20T19:52:28.027",
+    "SoilMoisture": 66,
+    "Light": 65,
+    "Temperature": 50,
+    "Humidity": 15
+  }
+]

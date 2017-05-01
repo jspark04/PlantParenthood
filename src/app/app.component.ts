@@ -9,8 +9,11 @@ import { ListPage } from '../pages/list/list';
 
 import { TabsPage } from '../pages/tabs/tabs'
 
+import { Api } from '../providers/api'
+
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [ Api ]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -19,7 +22,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public api: Api) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -37,6 +40,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      console.log("running api get stuff");
+
     });
   }
 

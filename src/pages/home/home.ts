@@ -6,12 +6,17 @@ import { PopOverAlert } from '../popoveralert/popoveralert';
 
 import { Api } from '../../providers/api';
 
+import { SensorModel } from '../../models/sensor'
+import { PlantModel } from '../../models/plant'
+
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  providers: [ Api ]
+  templateUrl: 'home.html'
 })
 export class HomePage {
+
+  sensordata: SensorModel[];
+  plantdata: PlantModel[];
 
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api) {
 
@@ -24,18 +29,11 @@ export class HomePage {
     });
   }
 
-  getData() {
-    this.api.getSensorData().subscribe(
-      result => {
-        //this.newsData=result.data.children;
-        console.log("Success : "+ result);
-      },
-      err =>{
-        console.error("Error : "+err);
-      } ,
-      () => {
-        console.log('getData completed');
-      }
-    );
+  getSensorData() {
+    this.sensordata = this.api.retrieveSensorData();
+  }
+
+  getPlantData() {
+    this.plantdata = this.api.retrievePlantData();
   }
 }

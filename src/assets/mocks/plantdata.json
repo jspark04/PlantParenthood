@@ -1,0 +1,22 @@
+[
+  {
+    "CareInfoID": 1,
+    "PlantName": "Warm-season plant",
+    "SoilMoisture": 60,
+    "Light": 100,
+    "Temperature": 70,
+    "Humidity": 20,
+    "Owned": true,
+    "Current": true
+  },
+  {
+    "CareInfoID": 2,
+    "PlantName": "Cold-season plant",
+    "SoilMoisture": 60,
+    "Light": 100,
+    "Temperature": 60,
+    "Humidity": 20,
+    "Owned": false,
+    "Current": false
+  }
+]
