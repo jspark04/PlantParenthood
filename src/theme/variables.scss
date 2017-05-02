@@ -13,6 +13,11 @@ $font-path: "../assets/fonts";
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
 
+//$bg-color: #C6ECAE;
+
+//$background-ios-color: $bg-color;
+//$background-md-color: $bg-color;
+//$background-wp-color: $bg-color;
 
 
 // Named Color Variables
@@ -29,9 +34,17 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  ppgreen:    #7B9A4A,
+  //ppgreen: #0C8346,
+  ppgreen: #329F5B,
+  pplightgreen: #329F5B,
+  pplightlightgreen: #8FD5A6,
+  pplightestgreen: #C6ECAE,
+  ppdarkgreen: #0D5D56,
   pplightbrown: #E4DFD6,
-  ppred: #ff0000
+  ppred: #F26157,
+  greenstatus: #329F5B,
+  yellowstatus: #ffc459,
+  redstatus: #F26157
 );
 
 

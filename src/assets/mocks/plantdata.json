@@ -16,7 +16,17 @@
     "Light": 100,
     "Temperature": 60,
     "Humidity": 20,
-    "Owned": false,
+    "Owned": true,
     "Current": false
+  },
+  {
+    "CareInfoID": 3,
+    "PlantName": "Lavender",
+    "SoilMoisture": 60,
+    "Light": 100,
+    "Temperature": 60,
+    "Humidity": 20,
+    "Owned": true,
+    "Current": true
   }
 ]

@@ -1,16 +1,35 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
+  <ion-header >
+    <ion-toolbar color="ppgreen">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
+
+    <ion-item-group>
+
+      <button menuClose ion-item *ngFor="let p of upperPages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+      <ion-item-divider color="ppgreen" class="menu-divider"> </ion-item-divider>
+      <button menuClose ion-item *ngFor="let p of lowerPages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+
+    </ion-item-group>
+
+    <!--
     <ion-list>
+      <ion-list no-lines>
+        <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+          {{ item }}
+        </button>
+      </ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
-    </ion-list>
+    </ion-list>-->
   </ion-content>
 
 </ion-menu>

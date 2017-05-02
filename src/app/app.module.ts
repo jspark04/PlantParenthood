@@ -6,16 +6,19 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { DevicesPage } from '../pages/devices/devices'
 import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { PopOverAlert } from '../pages/popoveralert/popoveralert';
 import { PlantsPage } from '../pages/plants/plants';
+import {PlantDetailPage} from "../pages/plantdetail/plantdetail";
+import { PlantTabsPage } from '../pages/planttabs/planttabs'
 
 import { Api } from '../providers/api';
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 
 /**
  * The Pages array lists all of the pages we want to use in our app.
@@ -28,7 +31,10 @@ let pages = [
   ListPage,
   TabsPage,
   PopOverAlert,
-  PlantsPage
+  PlantsPage,
+  DevicesPage,
+  PlantDetailPage,
+  PlantTabsPage
 ];
 
 export function providers() {

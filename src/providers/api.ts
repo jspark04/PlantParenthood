@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 
 import { PlantModel } from '../models/plant'
 import { SensorModel } from '../models/sensor'
+import { DeviceModel } from '../models/device'
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -14,14 +15,17 @@ export class Api {
   url: string = 'http://plantparenthood.azurewebsites.net/api';
   plantdata: PlantModel[];
   sensordata: SensorModel[];
+  devicedata: DeviceModel[];
 
   constructor(public http: Http) {
     this.http = http;
     this.plantdata = null;
     this.sensordata = null;
+    this.devicedata = null;
 
     this.getSensorData();
     this.getPlantData();
+    this.getDeviceData();
   }
 
   getSensorData() {
@@ -70,6 +74,30 @@ export class Api {
 
   retrievePlantData() {
     return this.plantdata;
+  }
+
+  getDeviceData() {
+    console.log("getting device data from api");
+    //this.http.get(this.url + '/DeviceDatas')
+    this.http.get('../assets/mocks/devicedata.json')
+      .map(res => res.json())
+      .subscribe(
+        result => {
+          this.devicedata = result;
+          //this.newsData=result.data.children;
+          console.log("Success : "+ result);
+        },
+        err =>{
+          console.error("Error : "+err);
+        } ,
+        () => {
+          console.log('getDeviceData completed');
+        }
+      );
+  }
+
+  retrieveDeviceData() {
+    return this.devicedata;
   }
 
   get(endpoint: string, params?: any, options?: RequestOptions) {

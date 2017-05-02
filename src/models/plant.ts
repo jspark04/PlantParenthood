@@ -10,6 +10,8 @@ export class PlantModel {
     public Light: number,
     public Temperature: number,
     public Humidity: number,
+    public Owned: boolean,
+    public Current: boolean
   ) {}
 
 

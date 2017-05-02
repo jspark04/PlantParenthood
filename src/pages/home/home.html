@@ -5,19 +5,30 @@
     </button>
     <ion-title text-center>Plant Parenthood</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only color="royal" (click)="presentPopover($event)">
-        <ion-icon name="ios-notifications" color="ppred"></ion-icon>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="md-notifications"><ion-badge item-right color="ppred">1</ion-badge></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Good morning, John!</h3>
+  <div class="card-background-page">
+    <ion-card>
+      <img src="../../assets/img/back3.jpg"/>
+      <div class="card-title">Good morning, John!</div>
+      <div class="card-subtitle">You've been great at taking care of your plants this week. Congratulations!</div>
+    </ion-card>
+  </div>
 
-  <p>
-    You've been great at taking care of your plants this week. Congratulations!
-  </p>
+  <ion-card>
+    <ion-card-header>
+      At-a-glance
+    </ion-card-header>
+    <ion-card-content>
+      Your plant care score is:
+    </ion-card-content>
+  </ion-card>
 
   <p>
     Dev testing section

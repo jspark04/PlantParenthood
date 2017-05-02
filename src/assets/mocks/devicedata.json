@@ -1,0 +1,10 @@
+[
+{
+"DeviceID": 1,
+"CareInfoID": 1,
+"DeviceName": "My First Smart Stick",
+"DeviceType": "Stick Sensor",
+"CreatedDate": "2017-04-01T17:00:10",
+"BatteryLevel": 85
+}
+]
