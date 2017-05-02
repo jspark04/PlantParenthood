@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar color="ppgreen">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>{{filteredPlantData[0].PlantName}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-right outline (click)="goBackToPlants()">
+        Back
+        <ion-icon name="md-leaf" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!--
+  <ion-card>
+    <ion-card-header color="ppgreen">
+      Monitoring <h4>Last updated: {{filteredSensorData[0].CreatedDate}}</h4>
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="md-water" item-left></ion-icon>
+        {{filteredSensorData[0].SoilMoisture}}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-sunny" item-left></ion-icon>
+        {{filteredSensorData[0].Light}}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-thermometer" item-left></ion-icon>
+        {{filteredSensorData[0].Temperature}}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-speedometer" item-left></ion-icon>
+        {{filteredSensorData[0].Humidity}}
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  -->
+  <ion-card>
+    <ion-card-header>
+      Bar Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Doughnut Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #doughnutCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Line Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
