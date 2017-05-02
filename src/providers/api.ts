@@ -31,7 +31,7 @@ export class Api {
   getSensorData() {
     console.log("getting sensor data from api");
     //this.http.get(this.url + '/SensorDatas')
-    this.http.get('../assets/mocks/sensordata.json')
+    this.http.get('./assets/mocks/sensordata.json')
       .map(res => res.json())
       .subscribe(
         result => {
@@ -55,7 +55,7 @@ export class Api {
   getPlantData() {
     console.log("getting plant data from api");
     //this.http.get(this.url + '/CareDatas')
-    this.http.get('../assets/mocks/plantdata.json')
+    this.http.get('./assets/mocks/plantdata.json')
       .map(res => res.json())
       .subscribe(
         result => {
@@ -79,7 +79,7 @@ export class Api {
   getDeviceData() {
     console.log("getting device data from api");
     //this.http.get(this.url + '/DeviceDatas')
-    this.http.get('../assets/mocks/devicedata.json')
+    this.http.get('./assets/mocks/devicedata.json')
       .map(res => res.json())
       .subscribe(
         result => {

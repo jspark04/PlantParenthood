@@ -20,7 +20,7 @@
     <ion-list>
       <ion-item *ngFor="let plant of monitoringPlants" (click)="viewPlantDetails(plant.CareInfoID)">
           <ion-avatar item-left>
-            <img src="../../assets/img/plant1.png">
+            <img src="./assets/img/plant1.png">
           </ion-avatar>
           <h2>{{plant.PlantName}}</h2>
           <ion-icon name="md-water" color="ppgreen"></ion-icon>
@@ -37,7 +37,7 @@
     <ion-list>
       <ion-item *ngFor="let plant of notmonitoringPlants">
         <ion-avatar item-left>
-          <img src="../../assets/img/plant1.png">
+          <img src="./assets/img/plant1.png">
         </ion-avatar>
         <h2>{{plant.PlantName}}</h2>
         <ion-icon name="md-water" class="greyedout"></ion-icon>
