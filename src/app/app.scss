@@ -1,3 +1,62 @@
+// Sass mixins
+
+/// Mixin printing a linear-gradient
+/// as well as a plain color fallback
+/// and the `-webkit-` prefixed declaration
+/// @access public
+/// @param {Keyword | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+@mixin linear-gradient($direction, $color-stops...) {
+  // Direction has been omitted and happens to be a color-stop
+  @if is-direction($direction) == false {
+    $color-stops: $direction, $color-stops;
+    $direction: 180deg;
+  }
+
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+
+// Plant Parenthood custom fonts
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url('../assets/fonts/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url('../assets/fonts/OpenSans-Semibold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+$open-sans: 'Open Sans', sans-serif;
+// Font style application
+#app-font {
+  // Referenced in index.html at root
+  //font-family: $open-sans;
+
+  .scroll-content {
+    h1, h2 {
+      color: map-get($colors, ppdarkgrey);
+    }
+
+    p {
+      font-size: 1.5em;
+      color: map-get($colors, pplightgrey);
+    }
+  }
+}
+
 // http://ionicframework.com/docs/v2/theming/
 
 .menu-divider {
@@ -18,3 +77,40 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+// Topbar styling
+
+
+// Define height
+//$header-main-minheight: 40px;
+
+#header-main {
+  .toolbar-background {
+    //color: magenta;
+    @include linear-gradient(to right, map-get($colors, gradientleft), map-get($colors, gradientright));
+  }
+  .toolbar-md {
+    //min-height: $header-main-minheight;
+  }
+
+  .button-inner {
+    color: white;
+  }
+
+  #notification-bell {
+    color: white;
+    font-size: 1.9em;
+  }
+
+  #add {
+    color: white;
+    font-size: 1.9em;
+  }
+
+  #menu-icon {
+    font-size: 2.4em;
+  }
+
+}
+
+

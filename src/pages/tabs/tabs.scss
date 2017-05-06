@@ -1,0 +1,25 @@
+main-tabs {
+  #tabs-main {
+    .tabbar {
+      // Fix to move up tabs
+      //top: $header-main-minheight !important;
+      height: 45px;
+
+      .tab-button-text {
+        font-size: 1.2em;
+      }
+
+      //color: magenta;
+      @include linear-gradient(to right, map-get($colors, gradientleft), map-get($colors, gradientright));
+      //color: #fff !important;
+
+      .tab-button[aria-selected=true] {
+        color: #fff !important;
+      }
+
+      .tab-button[aria-selected=false] {
+        color: #fff !important;
+      }
+    }
+  }
+}

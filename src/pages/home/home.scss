@@ -1,28 +1,59 @@
 page-home {
-  //background-color: #6ac789;
-  .card-background-page {
 
-    ion-card {
-      position: relative;
-      text-align: center;
-    }
-
-    .card-title {
-      position: absolute;
-      top: 36%;
-      font-size: 2.0em;
-      width: 100%;
+  .top-content {
+    padding-top: 40px;
+    h1 {
       font-weight: bold;
-      color: #fff;
     }
-
-    .card-subtitle {
-      font-size: 1.0em;
-      position: absolute;
-      top: 52%;
-      width: 100%;
-      color: #fff;
+    p {
+      -webkit-margin-before: 0.4em;
+      -webkit-margin-after: 0.4em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
     }
-
   }
+
+  .automatic-caring {
+    padding-top: 40px;
+    h2 {
+      font-weight: bold;
+      font-size: 1.4em;
+      margin: 0 !important;
+      padding-top: 0.4em;
+    }
+    p {
+      -webkit-margin-before: 0.4em;
+      -webkit-margin-after: 0.4em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
+    }
+  }
+
+  .content-placeholder {
+    height:170px;
+    width:100%;
+    background-color: map-get($colors, pplightestgrey);
+    @include border-radius(5px);
+  }
+
+  .notifications-section {
+    padding-top: 20px;
+    h2 {
+      font-weight: bold;
+      font-size: 1.4em;
+      //margin: 0 !important;
+      padding-top: 0.4em;
+    }
+    p {
+      font-size: 1.1em !important;
+      color: map-get($colors, pplightestgrey) !important;
+    }
+    .notification {
+      border-color: map-get($colors, pplightestgrey);
+      border-style: solid;
+      border-width: 1px;
+      @include border-radius(5px);
+    }
+  }
+
 }

@@ -7,6 +7,7 @@ import { DevicesPage } from '../devices/devices';
 //import { ContactPage } from '../contact/contact';
 
 @Component({
+  selector: 'main-tabs',
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
