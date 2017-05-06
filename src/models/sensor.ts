@@ -6,7 +6,7 @@ export class SensorModel {
   constructor(
     public SensorDataID: number,
     public CareInfoID: number,
-    public CreatedDate: string,
+    public CreatedDate: Date,
     public SoilMoisture: number,
     public Light: number,
     public Temperature: number,

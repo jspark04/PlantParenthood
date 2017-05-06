@@ -5,7 +5,7 @@ export class DeviceModel {
     public CareInfoID: number,
     public DeviceName: string,
     public DeviceType: string,
-    public CreatedDate: string,
+    public CreatedDate: Date,
     public BatteryLevel: number
   ) {}
 
