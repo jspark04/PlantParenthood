@@ -25,6 +25,20 @@
   border-radius: $radius;
 }
 
+@mixin circleimage() {
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
+}
+
+.circular--square {
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
+}
+
 
 // Plant Parenthood custom fonts
 @font-face {
@@ -48,10 +62,12 @@ $open-sans: 'Open Sans', sans-serif;
   .scroll-content {
     h1, h2 {
       color: map-get($colors, ppdarkgrey);
+      font-weight: 400;
     }
 
     p {
-      font-size: 1.5em;
+      font-size: 1.2em;
+      font-weight: 300;
       color: map-get($colors, pplightgrey);
     }
   }

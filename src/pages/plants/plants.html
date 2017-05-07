@@ -1,19 +1,45 @@
 <ion-header id="header-main">
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="ios-menu" id="menu-icon"></ion-icon>
-    </button>
-    <!--<ion-title text-center>Plant Parenthood</ion-title>-->
-    <ion-buttons end>
-      <button ion-button icon-only (click)="presentPopover($event)">
-        <ion-icon name="ios-notifications-outline" id="notification-bell"><!--<ion-badge item-right color="ppred">1</ion-badge>--></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
+  <main-header></main-header>
 </ion-header>
 
 <ion-content>
-  <ion-card>
+
+  <div class="top-spacer">
+
+  </div>
+
+  <div class="plant-box" *ngFor="let plant of monitoringPlants" (click)="viewPlantDetails(plant.CareInfoID)">
+    <ion-row>
+      <ion-col col-4 text-center class="plant-col">
+        <span class="helper"></span><img src="./assets/img/plant1.png" class="status-green">
+      </ion-col>
+      <ion-col col-8 class="plant-info-col">
+        <div>
+          <h1>{{plant.PlantName}}</h1>
+          <h2 class="status-green">Good</h2>
+          <p>
+            Connected with:<br>
+            Twig 1, Rain 1
+          </p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="plant-box" *ngFor="let plant of notmonitoringPlants">
+    <ion-row>
+      <ion-col col-4 text-center class="plant-col">
+        <span class="helper"></span><img src="./assets/img/plant1.png" class="status-disconnected">
+      </ion-col>
+      <ion-col col-8 class="plant-info-col">
+        <div>
+          <h1 class="status-disconnected">{{plant.PlantName}}</h1>
+          <h2 class="status-disconnected">Disconnected</h2>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!--<ion-card>
     <ion-card-header color="ppgreen">
       Monitoring
     </ion-card-header>
@@ -53,5 +79,5 @@
       <button ion-fab><ion-icon name="md-wifi"></ion-icon></button>
       <button ion-fab><ion-icon name="md-leaf"></ion-icon></button>
     </ion-fab-list>
-  </ion-fab>
+  </ion-fab>-->
 </ion-content>

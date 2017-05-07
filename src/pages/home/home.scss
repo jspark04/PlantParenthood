@@ -14,7 +14,7 @@ page-home {
   }
 
   .automatic-caring {
-    padding-top: 40px;
+    padding-top: 20px;
     h2 {
       font-weight: bold;
       font-size: 1.4em;
@@ -30,7 +30,7 @@ page-home {
   }
 
   .content-placeholder {
-    height:170px;
+    height:185px;
     width:100%;
     background-color: map-get($colors, pplightestgrey);
     @include border-radius(5px);

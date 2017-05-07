@@ -29,6 +29,8 @@ export class PlantsPage {
   monitoringPlants: PlantModel[] = [];
   notmonitoringPlants: PlantModel[] = [];
 
+
+
   constructor(public app: App, public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api) {
     //this.monitoringPlants = null;
     //this.notmonitoringPlants = null;
@@ -45,12 +47,12 @@ export class PlantsPage {
     }
   }
 
-  presentPopover(myEvent) {
+  /*presentPopover(myEvent) {
     let popover = this.popoverCtrl.create(PopOverAlert);
     popover.present({
       ev: myEvent
     });
-  }
+  }*/
 
   getSensorData() {
     this.sensordata = this.api.retrieveSensorData();

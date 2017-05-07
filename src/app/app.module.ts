@@ -15,7 +15,8 @@ import {PlantDetailPage} from "../pages/plantdetail/plantdetail";
 import { PlantTabsPage } from '../pages/planttabs/planttabs'
 
 import { Api } from '../providers/api';
-import { ProgressBar } from '../components/progress-bar/progress-bar'
+import { ProgressBar } from '../components/progress-bar/progress-bar';
+import { MainHeader } from '../components/main-header/main-header';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,7 +37,8 @@ let pages = [
   DevicesPage,
   PlantDetailPage,
   PlantTabsPage,
-  ProgressBar
+  ProgressBar,
+  MainHeader
 ];
 
 export function providers() {

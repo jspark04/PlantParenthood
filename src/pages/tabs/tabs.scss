@@ -1,5 +1,9 @@
 main-tabs {
+
   #tabs-main {
+    .tab-highlight {
+      background: white;
+    }
     .tabbar {
       // Fix to move up tabs
       //top: $header-main-minheight !important;
