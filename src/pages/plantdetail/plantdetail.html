@@ -1,5 +1,20 @@
-<ion-header>
-  <ion-navbar color="ppgreen">
+<ion-header id="header-main">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="ios-menu" id="menu-icon"></ion-icon>
+    </button>
+    <!--<ion-title text-center>Plant Parenthood</ion-title>-->
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="ios-notifications-outline" id="notification-bell"><!--<ion-badge item-right color="ppred">1</ion-badge>--></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button outline color="white" id="device-button">Device</button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <!--<ion-navbar color="ppgreen">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -10,10 +25,10 @@
         <ion-icon name="md-leaf" ></ion-icon>
       </button>
     </ion-buttons>
-  </ion-navbar>
+  </ion-navbar>-->
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <!--
   <ion-card>
     <ion-card-header color="ppgreen">
@@ -39,6 +54,105 @@
     </ion-list>
   </ion-card>
   -->
+
+  <div class="plant-box">
+    <ion-row>
+      <ion-col col-9 class="plant-info-col">
+        <div>
+          <h1>{{filteredPlantData[0].PlantName}}
+            <span id="plant-condition" class="status-green">&nbsp;Good</span></h1>
+          <p>
+            Your {{filteredPlantData[0].PlantName.toLowerCase()}} looks great!
+          </p>
+        </div>
+      </ion-col>
+      <ion-col col-3 text-center class="plant-col">
+        <span class="helper"></span><img src="./assets/img/plant1.png" class="status-green">
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="automatic-caring">
+    <ion-row>
+      <h1>
+        Action
+      </h1>
+    </ion-row>
+    <ion-row>
+      <ion-col col-10><h2>Automatic caring</h2></ion-col>
+      <ion-col col-2 id="toggle-col"><ion-toggle checked="false"></ion-toggle></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><button ion-button outline><ion-icon name="ios-water-outline"></ion-icon><span class="button-label">Water</span></button>
+      <button ion-button outline><ion-icon name="ios-sunny-outline" color="ppyellow"></ion-icon><span class="button-label">Light</span></button></ion-col>
+    </ion-row>
+  </div>
+
+  <div class="overview">
+    <ion-row>
+      <h1>
+        Overview
+      </h1>
+      <span class="last-updated">Last updated:
+        {{mostRecentSensorData.CreatedDate}}
+      </span>
+    </ion-row>
+
+    <ion-row class="measurement-box">
+      <ion-col col-3 class="measurement-name-box">
+        <ion-icon name="ios-water-outline"></ion-icon>
+        <span class="measurement-name">Moisture</span>
+      </ion-col>
+      <ion-col col-6 class="measurement-bar-box">
+        <progress-bar [progress]="mostRecentSensorData.SoilMoisture"></progress-bar>
+      </ion-col>
+      <ion-col col-3 class="measurement-value-box">
+        <span class="measurement-value">{{mostRecentSensorData.SoilMoisture}}<ion-icon name="ios-arrow-forward-outline" class="forward-arrow"></ion-icon></span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="measurement-box">
+      <ion-col col-3 class="measurement-name-box">
+        <ion-icon name="ios-sunny-outline"></ion-icon>
+        <span class="measurement-name">Light</span>
+      </ion-col>
+      <ion-col col-6 class="measurement-bar-box">
+        <progress-bar [progress]="mostRecentSensorData.Light"></progress-bar>
+      </ion-col>
+      <ion-col col-3 class="measurement-value-box">
+        <span class="measurement-value">{{mostRecentSensorData.Light}}<ion-icon name="ios-arrow-forward-outline" class="forward-arrow"></ion-icon></span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="measurement-box">
+      <ion-col col-3 class="measurement-name-box">
+        <ion-icon name="ios-thermometer-outline"></ion-icon>
+        <span class="measurement-name">Temp</span>
+      </ion-col>
+      <ion-col col-6 class="measurement-bar-box">
+        <progress-bar [progress]="mostRecentSensorData.Temperature"></progress-bar>
+      </ion-col>
+      <ion-col col-3 class="measurement-value-box">
+        <span class="measurement-value">{{mostRecentSensorData.Temperature}}<ion-icon name="ios-arrow-forward-outline" class="forward-arrow"></ion-icon></span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="measurement-box">
+      <ion-col col-3 class="measurement-name-box">
+        <ion-icon name="ios-speedometer-outline"></ion-icon>
+        <span class="measurement-name">Humidity</span>
+      </ion-col>
+      <ion-col col-6 class="measurement-bar-box">
+        <progress-bar [progress]="mostRecentSensorData.Humidity"></progress-bar>
+      </ion-col>
+      <ion-col col-3 class="measurement-value-box">
+        <span class="measurement-value">{{mostRecentSensorData.Humidity}}<ion-icon name="ios-arrow-forward-outline" class="forward-arrow"></ion-icon></span>
+      </ion-col>
+    </ion-row>
+
+  </div>
+
+
   <ion-card>
     <ion-card-header>
       Bar Chart

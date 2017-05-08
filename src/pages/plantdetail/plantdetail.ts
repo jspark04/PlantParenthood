@@ -39,6 +39,7 @@ export class PlantDetailPage {
   currentCareID: number;
   filteredSensorData: SensorModel[] = [];
   filteredPlantData: PlantModel[] = [];
+  mostRecentSensorData: SensorModel;
 
   constructor(public app: App, public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api, public navParams: NavParams) {
     //this.monitoringPlants = null;
@@ -62,6 +63,13 @@ export class PlantDetailPage {
         this.filteredSensorData.push(plant)
       }
     }
+
+    this.mostRecentSensorData = this.filteredSensorData[this.filteredSensorData.length-1];
+
+  }
+
+  refresh() {
+    //this.api.getSensorData().then();
   }
 
   presentPopover(myEvent) {

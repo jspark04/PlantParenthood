@@ -6,7 +6,13 @@
     "SoilMoisture": 30,
     "Light": 60,
     "Temperature": 50,
-    "Humidity": 10
+    "Humidity": 10,
+    "LightSumDay": 800,
+    "SoilMoistureCondition": 1,
+    "LightCondition": 3,
+    "TemperatureCondition": 1,
+    "HumidityCondition": 1,
+    "LightSumDayCondition": 5
   },
   {
     "SensorDataID": 2,
@@ -15,7 +21,13 @@
     "SoilMoisture": 40,
     "Light": 60,
     "Temperature": 50,
-    "Humidity": 13
+    "Humidity": 13,
+    "LightSumDay": 800,
+    "SoilMoistureCondition": 1,
+    "LightCondition": 3,
+    "TemperatureCondition": 1,
+    "HumidityCondition": 1,
+    "LightSumDayCondition": 5
   },
   {
     "SensorDataID": 3,
@@ -24,15 +36,27 @@
     "SoilMoisture": 60,
     "Light": 65,
     "Temperature": 50,
-    "Humidity": 15
+    "Humidity": 15,
+    "LightSumDay": 800,
+    "SoilMoistureCondition": 1,
+    "LightCondition": 3,
+    "TemperatureCondition": 1,
+    "HumidityCondition": 1,
+    "LightSumDayCondition": 5
   },
   {
-    "SensorDataID": 5,
+    "SensorDataID": 25,
     "CareInfoID": 1,
-    "CreatedDate": "2017-04-20T19:52:28.027",
-    "SoilMoisture": 66,
-    "Light": 65,
-    "Temperature": 50,
-    "Humidity": 15
+    "CreatedDate": "2017-05-08T10:27:49.263",
+    "SoilMoisture": 5,
+    "Light": 5,
+    "Temperature": 5,
+    "Humidity": 5,
+    "LightSumDay": 800,
+    "SoilMoistureCondition": 1,
+    "LightCondition": 3,
+    "TemperatureCondition": 1,
+    "HumidityCondition": 1,
+    "LightSumDayCondition": 5
   }
 ]

@@ -9,7 +9,7 @@ import { Api } from '../../providers/api';
 import { SensorModel } from '../../models/sensor'
 import { PlantModel } from '../../models/plant'
 
-import { PlantTabsPage } from '../../pages/planttabs/planttabs';
+import { PlantDetailPage } from '../../pages/plantdetail/plantdetail';
 
 /**
  * Generated class for the Plants page.
@@ -63,11 +63,9 @@ export class PlantsPage {
   }
 
   viewPlantDetails(id){
-    let nav = this.app.getRootNav();
-    nav.setRoot(PlantTabsPage, {careID: id});
-    //this.navCtrl.push(PlantTabsPage, {
-    //  careID: id
-    //});
+    this.navCtrl.push(PlantDetailPage, {
+      careID: id
+    });
   }
 
   ionViewDidLoad() {

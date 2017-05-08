@@ -11,6 +11,12 @@ export class SensorModel {
     public Light: number,
     public Temperature: number,
     public Humidity: number,
+    public LightSumDay: number,
+    public SoilMoistureCondition: number,
+    public LightCondition: number,
+    public TemperatureCondition: number,
+    public HumidityCondition: number,
+    public LightSumDayCondition: number
   ) {}
 
 

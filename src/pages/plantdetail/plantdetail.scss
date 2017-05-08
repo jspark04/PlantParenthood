@@ -14,4 +14,217 @@ page-plantdetail {
     }
 
   }
+
+  #device-button {
+    border-color: white;
+    border-radius: 1.5em;
+    text-transform: none;
+    font-size: 0.8em;
+    height: 25px;
+    padding: 1em;
+  }
+
+  .plant-box {
+
+    padding-top: 15px;
+
+    .plant-info-col {
+      //padding-left: 10px;
+      display:flex;
+      align-items: center;
+    }
+
+    h1 {
+      margin:0;
+      font-size: 1.8em;
+      font-weight: 500 !important;
+    }
+
+    #plant-condition {
+      font-size: 0.7em;
+      font-weight: 400;
+    }
+
+    p {
+      margin:0;
+      font-size: 1em !important;
+      font-weight: 400 !important;
+      color: map_get($colors, ppdarkgrey) !important;
+    }
+
+    img {
+      @include circleimage();
+      width: 100%;
+      vertical-align: middle;
+      max-width: 75px;
+    }
+
+    img.status-green {
+      border: 3px;
+      border-color: map_get($colors, ppteal);
+      border-style: solid;
+    }
+    img.status-disconnected {
+      border: 3px;
+      border-color: map_get($colors, pplightgrey);
+      border-style: solid;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      font-weight: 300;
+    }
+
+    .status-green {
+      color: map_get($colors, ppteal) !important;
+    }
+    .status-yellow {
+      color: map_get($colors, ppteal) !important;
+    }
+    .status-red {
+      color: map_get($colors, ppteal) !important;
+    }
+    .status-disconnected {
+      color: map_get($colors, pplightgrey) !important;
+    }
+
+    .helper {
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  .automatic-caring {
+
+    padding-top: 50px;
+
+
+    h1 {
+      margin-left: 5px;
+      margin-bottom: 0;
+      font-size: 1.3em;
+      font-weight: 500 !important;
+    }
+    h2 {
+      //font-weight: bold;
+      font-size: 1.1em;
+      margin: 0 !important;
+      padding-top: 0.4em !important;
+      color: map_get($colors, pplightgrey) !important;
+    }
+    #toggle-col {
+      padding: 0;
+    }
+    p {
+      -webkit-margin-before: 0.4em;
+      -webkit-margin-after: 0.4em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
+    }
+    button {
+      width: 80px;
+      height: 80px;
+      border-color: map_get($colors, pplightestgrey);
+      text-transform: none;
+      margin-left: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-right: 5px;
+      @include border-radius(5px);
+
+      .button-inner {
+        display: grid;
+      }
+
+      ion-icon {
+        font-size: 2em;
+        margin-top: 35%;
+      }
+
+      .button-label {
+        position: relative;
+        top: -12px;
+        color: map_get($colors, ppdarkgrey);
+        font-size: 0.9em;
+      }
+
+
+    }
+  }
+
+  .overview {
+    padding-top: 35px;
+
+    .last-updated {
+      margin-left: 5px;
+      color: map_get($colors, pplightgrey);
+    }
+
+    .measurement-box {
+      border-color: map_get($colors, pplightestgrey);
+      border-style: solid;
+      border-width: 1px;
+      @include border-radius(5px);
+      margin: 5px;
+
+      .measurement-name-box {
+        display: grid;
+        align-items:center;
+        text-align: center;
+
+        ion-icon {
+          font-size: 2em;
+          margin-top: 20%;
+          color: map_get($colors, ppdarkgrey);
+        }
+
+        .measurement-name {
+          margin-bottom: 10px;
+          color: map_get($colors, ppdarkgrey);
+          font-size: 0.9em;
+          font-weight: 500;
+        }
+      }
+
+      .measurement-bar-box {
+        display: grid;
+        text-align: center;
+        align-items: center;
+      }
+
+      .measurement-value-box {
+        display: grid;
+        text-align: center;
+        align-items: center;
+
+        .measurement-value {
+          font-size: 2em;
+          font-weight: 300;
+          color: map_get($colors, ppdarkgrey);
+        }
+
+        .forward-arrow {
+          font-size: 1em;
+          padding-left:0.3em;
+          color: map_get($colors, pplightgrey);
+        }
+      }
+
+    }
+
+    h1 {
+      margin-left: 5px;
+      margin-bottom: 0;
+      font-size: 1.3em;
+      font-weight: 500 !important;
+    }
+    p {
+      -webkit-margin-before: 0.4em;
+      -webkit-margin-after: 0.4em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
+    }
+  }
+
 }

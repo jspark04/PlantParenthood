@@ -1,7 +1,7 @@
 [
   {
     "CareInfoID": 1,
-    "PlantName": "Warm-season plant",
+    "PlantName": "Rosemary",
     "SoilMoisture": 60,
     "Light": 100,
     "Temperature": 70,
@@ -11,7 +11,7 @@
   },
   {
     "CareInfoID": 2,
-    "PlantName": "Cold-season plant",
+    "PlantName": "Lavender",
     "SoilMoisture": 60,
     "Light": 100,
     "Temperature": 60,
@@ -21,7 +21,7 @@
   },
   {
     "CareInfoID": 3,
-    "PlantName": "Lavender",
+    "PlantName": "Basil",
     "SoilMoisture": 60,
     "Light": 100,
     "Temperature": 60,

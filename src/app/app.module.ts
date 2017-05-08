@@ -12,7 +12,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { PopOverAlert } from '../pages/popoveralert/popoveralert';
 import { PlantsPage } from '../pages/plants/plants';
 import {PlantDetailPage} from "../pages/plantdetail/plantdetail";
-import { PlantTabsPage } from '../pages/planttabs/planttabs'
 
 import { Api } from '../providers/api';
 import { ProgressBar } from '../components/progress-bar/progress-bar';
@@ -36,7 +35,6 @@ let pages = [
   PlantsPage,
   DevicesPage,
   PlantDetailPage,
-  PlantTabsPage,
   ProgressBar,
   MainHeader
 ];

@@ -17,126 +17,168 @@ export class Api {
   sensor: SensorModel;
   plant: PlantModel;
   device: DeviceModel;
+
   constructor(public http: Http) {
     this.http = http;
     //this.plantdata = null;
     //this.sensordata = null;
     //this.sensor = null;
     //this.devicedata = null;
-    this.getSensorData();
-    this.getPlantData();
-    this.getDeviceData();
+    /*
+    this.getSensorDataAsync().then((res) => {
+      console.log("Promise returned from getSensorDataAsync")
+      console.dir(res);
+    });
+    this.getPlantDataAsync().then((res) => {
+      console.log("Promise returned from getPlantDataAsync")
+      console.dir(res);
+    });
+    this.getDeviceDataAsync().then((res) => {
+      console.log("Promise returned from getDeviceDataAsync")
+      console.dir(res);
+    });*/
+
   }
-  getSensorData() {
-    console.log("getting sensor data from api");
-    //this.http.get(this.url + '/SensorDatas/GetSensorData')
-    this.http.get('./assets/mocks/sensordata.json')
-      .map(res => res.json())
-      .subscribe(
-        result => {
-          for (let x of result) {
-            // Put all the data into the placeholder from JSON result
-            this.sensor = new SensorModel(
-              x.SensorDataID,
-              x.CareInfoID,
-              new Date(x.CreatedDate),
-              x.Humidity,
-              x.Light,
-              x.SoilMoisture,
-              x.Temperature
-            );
-            // Push placeholder object into the sensordata array
-            this.sensordata.push(this.sensor);
+
+  promise = new Promise((resolve, reject) => {
+    resolve(123);
+  });
+
+  getSensorDataAsync(): Promise<any> {
+    this.sensordata = []; // Clear current array of sensor data
+    console.log("Calling getSensorDataAsync function from API");
+    return new Promise((resolve,reject) => {
+      console.log("Get request for sensor data sent to API");
+      //this.http.get(this.url + '/SensorDatas/GetSensorData')
+      this.http.get('./assets/mocks/sensordata.json')
+        .map(res => res.json())
+        .subscribe(
+          result => {
+            for (let x of result) {
+              // Put all the data into the placeholder from JSON result
+              this.sensor = new SensorModel(
+                x.SensorDataID,
+                x.CareInfoID,
+                new Date(x.CreatedDate),
+                x.Humidity,
+                x.Light,
+                x.SoilMoisture,
+                x.Temperature,
+                x.LightSumDay,
+                x.SoilMoistureCondition,
+                x.LightCondition,
+                x.TemperatureCondition,
+                x.HumidityCondition,
+                x.LightSumDayCondition
+              );
+              // Push placeholder object into the sensordata array
+              this.sensordata.push(this.sensor);
+            }
+            //this.sensordata = result;
+            //this.newsData=result.data.children;
+            console.log("Success : "+ result);
+            resolve(this.sensordata);
+          },
+          err =>{
+            console.error("Error : "+err);
+            reject(err);
+          } ,
+          () => {
+            console.log('GetSensorData request to API finished');
           }
-          //this.sensordata = result;
-          //this.newsData=result.data.children;
-          console.log("Success : "+ result);
-        },
-        err =>{
-          console.error("Error : "+err);
-        } ,
-        () => {
-          console.log('getSensorData completed');
-          console.dir(this.sensordata)
-        }
-      );
+        );
+    });
   }
   retrieveSensorData() {
     console.log(this.sensordata);
     return this.sensordata;
   }
-  getPlantData() {
-    console.log("getting plant data from api");
-    //this.http.get(this.url + '/CareDatas/GetCareData')
-    this.http.get('./assets/mocks/plantdata.json')
-      .map(res => res.json())
-      .subscribe(
-        result => {
-          for (let x of result) {
-            // Put all the data into the placeholder from JSON result
-            this.plant = new PlantModel(
-              x.CareInfoID,
-              x.PlantName,
-              x.SoilMoisture,
-              x.Light,
-              x.Temperature,
-              x.Humidity,
-              x.Owned,
-              x.Current
-            );
-            // Push placeholder object into the sensordata array
-            this.plantdata.push(this.plant);
+
+  getPlantDataAsync(): Promise<any> {
+    this.plantdata = []; // Clear current array of sensor data
+    console.log("Calling getPlantDataAsync function from API");
+    return new Promise((resolve,reject) => {
+      console.log("Get request for plant data sent to API");
+      //this.http.get(this.url + '/CareDatas/GetCareData')
+      this.http.get('./assets/mocks/plantdata.json')
+        .map(res => res.json())
+        .subscribe(
+          result => {
+            for (let x of result) {
+              // Put all the data into the placeholder from JSON result
+              this.plant = new PlantModel(
+                x.CareInfoID,
+                x.PlantName,
+                x.SoilMoisture,
+                x.Light,
+                x.Temperature,
+                x.Humidity,
+                x.Owned,
+                x.Current
+              );
+              // Push placeholder object into the plantdata array
+              this.plantdata.push(this.plant);
+            }
+            //this.newsData=result.data.children;
+            console.log("Success : "+ result);
+            resolve(this.plantdata);
+          },
+          err =>{
+            console.error("Error : "+err);
+            reject(err);
+          } ,
+          () => {
+            console.log('GetPlantData request to API finished');
           }
-          //this.newsData=result.data.children;
-          console.log("Success : "+ result);
-        },
-        err =>{
-          console.error("Error : "+err);
-        } ,
-        () => {
-          console.log('getPlantData completed');
-          console.dir(this.plantdata)
-        }
-      );
+        );
+    });
   }
   retrievePlantData() {
     return this.plantdata;
   }
-  getDeviceData() {
-    console.log("getting device data from api");
-    //this.http.get(this.url + '/DeviceDatas/GetDeviceData')
-    this.http.get('./assets/mocks/devicedata.json')
-      .map(res => res.json())
-      .subscribe(
-        result => {
-          for (let x of result) {
-            // Put all the data into the placeholder from JSON result
-            this.device = new DeviceModel(
-              x.DeviceID,
-              x.CareInfoID,
-              x.DeviceName,
-              x.DeviceType,
-              new Date(x.CreatedDate),
-              x.BatteryLevel
-            );
-            // Push placeholder object into the sensordata array
-            this.devicedata.push(this.device);
+
+  getDeviceDataAsync(): Promise<any> {
+    this.devicedata = []; // Clear current array of device data
+    console.log("Calling getDeviceDataAsync function from API");
+    return new Promise((resolve,reject) => {
+      console.log("Get request for device data sent to API");
+      //this.http.get(this.url + '/DeviceDatas/GetDeviceData')
+      this.http.get('./assets/mocks/devicedata.json')
+        .map(res => res.json())
+        .subscribe(
+          result => {
+            for (let x of result) {
+              // Put all the data into the placeholder from JSON result
+              this.device = new DeviceModel(
+                x.DeviceID,
+                x.CareInfoID,
+                x.DeviceName,
+                x.DeviceType,
+                new Date(x.CreatedDate),
+                x.BatteryLevel
+              );
+              // Push placeholder object into the sensordata array
+              this.devicedata.push(this.device);
+              resolve(this.devicedata);
+            }
+            //this.newsData=result.data.children;
+            console.log("Success : "+ result);
+          },
+          err =>{
+            console.error("Error : "+err);
+            reject(err);
+          } ,
+          () => {
+            console.log('GetDeviceData request to API finished');
           }
-          //this.newsData=result.data.children;
-          console.log("Success : "+ result);
-        },
-        err =>{
-          console.error("Error : "+err);
-        } ,
-        () => {
-          console.log('getDeviceData completed');
-          console.dir(this.devicedata)
-        }
-      );
+        );
+    });
   }
   retrieveDeviceData() {
     return this.devicedata;
   }
+
+
   get(endpoint: string, params?: any, options?: RequestOptions) {
     if (!options) {
       options = new RequestOptions();
