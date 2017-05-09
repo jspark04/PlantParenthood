@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 /**
  * Generated class for the ProgressBar component.
@@ -10,12 +10,22 @@ import { Component, Input } from '@angular/core';
   selector: 'progress-bar',
   templateUrl: 'progress-bar.html'
 })
-export class ProgressBar {
+export class ProgressBar implements OnInit {
 
   @Input('progress') progress;
+  @Input('ideal') ideal;
+
+  widthOfGradient: number = 30;
 
   constructor() {
 
   }
 
+  ngOnInit() {
+    if (this.ideal == null) {
+      console.log('no ideal value passed to progress bar');
+      this.ideal = 0;
+      this.widthOfGradient = 0;
+    }
+  }
 }

@@ -35,16 +35,10 @@ export class PlantsPage {
     //this.monitoringPlants = null;
     //this.notmonitoringPlants = null;
 
-    this.getPlantData();
-    this.getSensorData();
+  }
 
-    for (let plant of this.plantdata) {
-      if (plant.Current && plant.Owned) {
-        this.monitoringPlants.push(plant)
-      } else if (!plant.Current && plant.Owned) {
-        this.notmonitoringPlants.push(plant)
-      }
-    }
+  ionViewDidEnter() {
+    this.refreshList();
   }
 
   /*presentPopover(myEvent) {
@@ -54,12 +48,16 @@ export class PlantsPage {
     });
   }*/
 
-  getSensorData() {
-    this.sensordata = this.api.retrieveSensorData();
-  }
-
-  getPlantData() {
-    this.plantdata = this.api.retrievePlantData();
+  refreshList() {
+    this.monitoringPlants = [];
+    this.notmonitoringPlants = [];
+    for (let plant of this.api.plantdata) {
+      if (plant.Current && plant.Owned) {
+        this.monitoringPlants.push(plant)
+      } else if (!plant.Current && plant.Owned) {
+        this.notmonitoringPlants.push(plant)
+      }
+    }
   }
 
   viewPlantDetails(id){

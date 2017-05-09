@@ -199,9 +199,13 @@ page-plantdetail {
         align-items: center;
 
         .measurement-value {
-          font-size: 2em;
+          font-size: 1.5em;
           font-weight: 300;
           color: map_get($colors, ppdarkgrey);
+        }
+
+        .degree-units {
+          font-size: 0.8em;
         }
 
         .forward-arrow {

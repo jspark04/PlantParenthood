@@ -4,7 +4,26 @@
 
 
 <ion-content>
-  <ion-card>
+  <div class="top-spacer">
+
+  </div>
+
+  <div class="plant-box" *ngFor="let device of extendeddevicedata">
+    <ion-row>
+      <ion-col col-4 text-center class="plant-col">
+        <span class="helper"></span><img src="./assets/img/device1.png" class="status-green">
+      </ion-col>
+      <ion-col col-8 class="plant-info-col">
+        <div>
+          <h1>{{device.device.DeviceName}}</h1>
+          <h2>{{device.device.DeviceType}}</h2>
+          <p>Monitoring: {{device.plantname}}</p>
+          <p>Battery status: {{device.device.BatteryLevel}}%</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+  <!--<ion-card>
     <ion-card-header color="ppgreen">
       Devices currently owned:
     </ion-card-header>
@@ -27,5 +46,5 @@
       <button ion-fab><ion-icon name="md-wifi"></ion-icon></button>
       <button ion-fab><ion-icon name="md-leaf"></ion-icon></button>
     </ion-fab-list>
-  </ion-fab>
+  </ion-fab>-->
 </ion-content>

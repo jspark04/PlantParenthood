@@ -22,4 +22,26 @@ progress-bar {
     background-color: map-get($colors, pplightgrey);
   }
 
+  .current-marker {
+    width: 2px;
+    position: relative;
+    left: 30%;
+    top: -125%;
+    height: 150%;
+    background-color: map-get($colors, pplightgrey);
+  }
+
+  .ideal-area {
+    height: 7px;
+    //min-width: 15%;
+    //width: 30%;
+    position: relative;
+    //left: 65%;
+    white-space: nowrap;
+    overflow: hidden;
+    //padding: 5px;
+    //border-radius: 20px;
+    @include linear-gradient(to right, map-get($colors, pplightestgrey), map-get($colors, ppteal), map-get($colors, pplightestgrey));
+  }
+
 }

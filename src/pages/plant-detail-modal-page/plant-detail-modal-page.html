@@ -1,0 +1,50 @@
+<!--
+  Generated template for the PlantDetailModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header id="header-modal">
+  <!--<ion-navbar>
+    <button ion-button icon-only clear (click)="closeModal()">
+      <ion-icon name="ios-close" id="close-button-icon"></ion-icon>
+    </button>
+    <ion-title text-center>Rosemary</ion-title>
+
+  </ion-navbar>-->
+  <ion-navbar>
+
+    <button ion-button clear (click)="closeModal()">
+        <ion-icon name="ios-close" id="close-button-icon"></ion-icon>
+    </button>
+    <ion-title text-center>{{filteredPlantData[0].PlantName}}</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="top-section">
+    <h1>
+      {{measure}}
+    </h1>
+    <h2>
+      Good
+    </h2>
+  </div>
+  <div class="graph-section">
+    <canvas #lineCanvas></canvas>
+  </div>
+  <div class="suggestions-section">
+    <h2>
+      Suggestions
+    </h2>
+    <div class="suggestion-box">
+      <ul>
+        <li>
+          List item 1
+        </li>
+      </ul>
+    </div>
+  </div>
+</ion-content>

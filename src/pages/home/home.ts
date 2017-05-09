@@ -29,7 +29,6 @@ export class HomePage {
     //this.getPlantData();
 
     //this.getDeviceData();
-
     Promise.all([this.api.getSensorDataAsync(), this.api.getPlantDataAsync(), this.api.getDeviceDataAsync()])
       .then((res) => {
         [this.sensordata, this.plantdata, this.devicedata] = res;
@@ -41,13 +40,36 @@ export class HomePage {
           }
         }
         this.numPlants = this.monitoringPlants.length;
-        this.numDevices = this.devicedata.length;
+        this.numDevices = this.api.devicedata.length;
+
       });
 
     //this.firstdelayer();
   }
 
+  ionViewCanEnter(): boolean {
+    if (this.api.plantdata != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
+  refreshNumbers() {
+    this.monitoringPlants = [];
+    this.notmonitoringPlants = [];
+    if (this.api.plantdata != null && this.api.devicedata != null) {
+      for (let plant of this.api.plantdata) {
+        if (plant.Current && plant.Owned) {
+          this.monitoringPlants.push(plant)
+        } else if (!plant.Current && plant.Owned) {
+          this.notmonitoringPlants.push(plant)
+        }
+      }
+      this.numPlants = this.monitoringPlants.length;
+      this.numDevices = this.devicedata.length;
+    }
+  }
 
   firstdelayer() {
     setTimeout(() => {
@@ -58,6 +80,10 @@ export class HomePage {
     }, 10000);
 
   };
+
+  ionViewDidEnter() {
+    this.refreshNumbers();
+  }
 
   seconddelayer() {
     console.log("run second delayer");
@@ -76,16 +102,15 @@ export class HomePage {
   }
 
   getSensorData() {
-    this.sensordata = this.api.retrieveSensorData();
-    console.log(this.sensordata.length);
+    this.api.getSensorDataAsync();
   }
 
   getPlantData() {
-    this.plantdata = this.api.retrievePlantData();
+    this.api.getPlantDataAsync();
   }
 
   getDeviceData() {
-    this.devicedata = this.api.retrieveDeviceData();
+    this.api.getDeviceDataAsync();
   }
 
 }

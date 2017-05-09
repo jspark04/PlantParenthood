@@ -1,4 +1,9 @@
 <div class="progress-outer">
-  <div class="progress-inner" [style.width]="progress + '%'">
+  <!--<div class="left-gradient" [style.width]="ideal + '%'">
+  </div>-->
+  <div class="ideal-area" [style.width]="widthOfGradient + '%'" [style.left]="(ideal - widthOfGradient/2) + '%'"  >
   </div>
+  <!--<div class="right-gradient" [style.width]="(100-ideal) + '%'">
+  </div>-->
+  <div class="current-marker" [style.left]="progress + '%'"></div>
 </div>

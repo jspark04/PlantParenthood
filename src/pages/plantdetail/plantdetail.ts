@@ -1,11 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { App, NavController, NavParams } from 'ionic-angular';
+import { App, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { PopoverController } from 'ionic-angular';
 import { PopOverAlert } from '../popoveralert/popoveralert';
 
 import { PlantsPage } from '../plants/plants';
 import { TabsPage } from '../tabs/tabs';
+import { PlantDetailModalPage } from "../plant-detail-modal-page/plant-detail-modal-page";
 
 import { Api } from '../../providers/api';
 
@@ -40,25 +41,35 @@ export class PlantDetailPage {
   filteredSensorData: SensorModel[] = [];
   filteredPlantData: PlantModel[] = [];
   mostRecentSensorData: SensorModel;
+  lastUpdatedDateTime: string;
 
-  constructor(public app: App, public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api, public navParams: NavParams) {
+  constructor(public modalCtrl: ModalController, public app: App, public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api, public navParams: NavParams) {
     //this.monitoringPlants = null;
     //this.notmonitoringPlants = null;
 
-    this.getPlantData();
-    this.getSensorData();
     console.log("care id that was passed:");
     console.log(this.navParams.get('careID'));
 
+    this.refresh();
+
+  }
+
+  ionViewDidEnter() {
+    this.refresh();
+  }
+
+  refresh() {
     this.currentCareID = this.navParams.get('careID');
 
     // Get plant and sensor data for just this particular careID (plant)
-    for (let plant of this.plantdata) {
+    this.filteredPlantData = [];
+    this.filteredSensorData = [];
+    for (let plant of this.api.plantdata) {
       if (plant.CareInfoID == this.currentCareID) {
         this.filteredPlantData.push(plant)
       }
     }
-    for (let plant of this.sensordata) {
+    for (let plant of this.api.sensordata) {
       if (plant.CareInfoID == this.currentCareID) {
         this.filteredSensorData.push(plant)
       }
@@ -66,10 +77,15 @@ export class PlantDetailPage {
 
     this.mostRecentSensorData = this.filteredSensorData[this.filteredSensorData.length-1];
 
+    this.lastUpdatedDateTime = this.mostRecentSensorData.CreatedDate.getHours() + ":" + this.mostRecentSensorData.CreatedDate.getMinutes() + ":" + this.mostRecentSensorData.CreatedDate.getSeconds();
+    this.lastUpdatedDateTime = this.lastUpdatedDateTime + " on " + (this.mostRecentSensorData.CreatedDate.getMonth() + 1) + "/" + this.mostRecentSensorData.CreatedDate.getDate() + "/" + this.mostRecentSensorData.CreatedDate.getFullYear();
+
   }
 
-  refresh() {
-    //this.api.getSensorData().then();
+  openModal(measure, careid, sensordata, plantdata) {
+    let obj = {measure: measure, careID: careid, sensordata: sensordata, plantdata: plantdata};
+    let myModal = this.modalCtrl.create(PlantDetailModalPage, obj);
+    myModal.present();
   }
 
   presentPopover(myEvent) {
@@ -97,106 +113,6 @@ export class PlantDetailPage {
     //this.description = this.navParams.get('item').description;
     console.log('ionViewDidLoad PlantDetail');
 
-    this.barChart = new Chart(this.barCanvas.nativeElement, {
-
-      type: 'bar',
-      data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero:true
-            }
-          }]
-        }
-      }
-
-    });
-
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-
-      type: 'doughnut',
-      data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56",
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
-      }
-
-    });
-
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-
-      type: 'line',
-      data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-          {
-            label: "My First dataset",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(75,192,192,1)",
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40],
-            spanGaps: false,
-          }
-        ]
-      }
-
-    });
   }
 
 }

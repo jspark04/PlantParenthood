@@ -1,0 +1,92 @@
+
+page-plant-detail-modal-page {
+
+  // Remove drop shadow
+  .header-md::after,
+  .tabs-md[tabsPlacement="top"] > .tabbar::after,
+  .footer-md::before,
+  .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+    background-image: none;
+  }
+
+  #header-modal {
+    .toolbar-background {
+      //color: magenta;
+      background-color: map_get($colors, ppblue);
+      }
+    .toolbar-md {
+      //min-height: $header-main-minheight;
+    }
+    .toolbar-content-md {
+      position:relative;
+      display:inherit;
+    }
+    .toolbar-title {
+      width: 85%;
+      color: white;
+      font-weight:300;
+    }
+
+
+
+
+    .button-inner {
+      color: white;
+    }
+
+    #notification-bell {
+      color: white;
+      font-size: 1.9em;
+    }
+
+    #add {
+      color: white;
+      font-size: 1.9em;
+    }
+
+    #close-button-icon {
+      font-size: 2.4em;
+    }
+
+  }
+
+  ion-content {
+    background-color: map_get($colors, ppblue) !important;
+  }
+
+  .top-section {
+    margin-top: 3px;
+    h1, h2 {
+      color: white !important;
+    }
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 6px;
+    }
+    h2 {
+      font-size:1.2em;
+      font-weight: 300 !important;
+    }
+  }
+
+  .graph-section {
+    margin-top: 30px;
+  }
+
+  .suggestions-section {
+    margin-top: 20px;
+    h2 {
+      font-size:1.2em;
+      font-weight: 300 !important;
+      color: white !important;
+    }
+    .suggestion-box {
+      border-color: map_get($colors, pplightestgrey);
+      border-style: solid;
+      border-width: 1px;
+      @include border-radius(5px);
+      color: white !important;
+      font-weight: 300 !important;
+    }
+  }
+}
