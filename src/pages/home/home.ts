@@ -29,6 +29,15 @@ export class HomePage {
     //this.getPlantData();
 
     //this.getDeviceData();
+
+
+    //this.firstdelayer();
+  }
+
+  refreshNumbers() {
+    this.monitoringPlants = [];
+    this.notmonitoringPlants = [];
+
     Promise.all([this.api.getSensorDataAsync(), this.api.getPlantDataAsync(), this.api.getDeviceDataAsync()])
       .then((res) => {
         [this.sensordata, this.plantdata, this.devicedata] = res;
@@ -44,31 +53,6 @@ export class HomePage {
 
       });
 
-    //this.firstdelayer();
-  }
-
-  ionViewCanEnter(): boolean {
-    if (this.api.plantdata != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  refreshNumbers() {
-    this.monitoringPlants = [];
-    this.notmonitoringPlants = [];
-    if (this.api.plantdata != null && this.api.devicedata != null) {
-      for (let plant of this.api.plantdata) {
-        if (plant.Current && plant.Owned) {
-          this.monitoringPlants.push(plant)
-        } else if (!plant.Current && plant.Owned) {
-          this.notmonitoringPlants.push(plant)
-        }
-      }
-      this.numPlants = this.monitoringPlants.length;
-      this.numDevices = this.devicedata.length;
-    }
   }
 
   firstdelayer() {
