@@ -48,6 +48,12 @@ export class PlantDetailModalPage {
 
   createDataObject() {
 
+    if (this.filteredSensorData.length > 20) {
+      this.filteredSensorData = this.filteredSensorData.slice(this.filteredSensorData.length - 20);
+    }
+
+    console.dir(this.filteredSensorData);
+
     switch(this.measure) {
       case "Soil Moisture":
         for (let datapt of this.filteredSensorData) {
@@ -240,7 +246,8 @@ export class PlantDetailModalPage {
               labelString: 'Time'
             },
             time: {
-              unit: 'day',
+              //unit: 'day',
+              //unitStepSize: 6
               //tooltipFormat: 'MMM D, hA'
             }
           }],

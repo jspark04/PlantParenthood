@@ -49,8 +49,8 @@ export class Api {
     console.log("Calling getSensorDataAsync function from API");
     return new Promise((resolve,reject) => {
       console.log("Get request for sensor data sent to API");
-      //this.http.get(this.url + '/SensorDatas/GetSensorData')
-      this.http.get('./assets/mocks/sensordata.json')
+      this.http.get(this.url + '/SensorDatas/GetSensorData')
+      //this.http.get('./assets/mocks/sensordata.json')
         .map(res => res.json())
         .subscribe(
           result => {
@@ -76,6 +76,14 @@ export class Api {
             }
             //this.sensordata = result;
             //this.newsData=result.data.children;
+            //this.sensordata.sort((a, b) => return a.CreatedDate - b.CreatedDate})
+
+            this.sensordata.sort(function(a, b) {
+              return a.CreatedDate>b.CreatedDate ? 1 : a.CreatedDate<b.CreatedDate ? -1 : 0;
+            });
+            console.log("this is the sorted sensor data");
+            console.dir(this.sensordata);
+
             console.log("Success : "+ result);
             resolve(this.sensordata);
           },

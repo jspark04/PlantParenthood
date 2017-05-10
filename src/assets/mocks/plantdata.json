@@ -3,9 +3,9 @@
     "CareInfoID": 1,
     "PlantName": "Rosemary",
     "SoilMoisture": 60,
-    "Light": 100,
-    "Temperature": 70,
-    "Humidity": 20,
+    "Light": 800,
+    "Temperature": 20,
+    "Humidity": 60,
     "Owned": true,
     "Current": true
   },

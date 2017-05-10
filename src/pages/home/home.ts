@@ -73,7 +73,7 @@ export class HomePage {
 
   firstdelayer() {
     setTimeout(() => {
-      console.log("run first delayer");
+      console.log("RUNNING BACKGROUND ASYNC PROCESS");
       this.api.getSensorDataAsync().then((res) => {
         this.seconddelayer();
       });
