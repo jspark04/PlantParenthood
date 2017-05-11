@@ -24,14 +24,14 @@ export class HomePage {
   notmonitoringPlants: PlantModel[] = [];
   numPlants: number = 0;
   numDevices: number = 0;
+  onPage: boolean;
 
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api) {
-    //this.getPlantData();
 
-    //this.getDeviceData();
+    console.log("home constructor executed");
 
-
-    //this.firstdelayer();
+    this.onPage = true;
+    //this.realTimeDataProcess();
   }
 
   refreshNumbers() {
@@ -55,24 +55,31 @@ export class HomePage {
 
   }
 
-  firstdelayer() {
+  realTimeDataProcess() {
     setTimeout(() => {
       console.log("RUNNING BACKGROUND ASYNC PROCESS");
       this.api.getSensorDataAsync().then((res) => {
-        this.seconddelayer();
+        this.checkIfStillOnPage();
       });
     }, 10000);
-
   };
+  checkIfStillOnPage() {
+    console.log("run second delayer");
+    if (this.onPage) {
+      this.realTimeDataProcess();
+    }
+  }
 
   ionViewDidEnter() {
+    this.onPage = true;
     this.refreshNumbers();
   }
 
-  seconddelayer() {
-    console.log("run second delayer");
-    this.firstdelayer();
+  ionViewDidLeave() {
+    this.onPage = false;
   }
+
+
 
   ionViewDidLoad() {
     console.log("loaded home");

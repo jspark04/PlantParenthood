@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 import { PlantModel } from '../models/plant'
 import { SensorModel } from '../models/sensor'
 import { DeviceModel } from '../models/device'
+
+import * as moment from 'moment';
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
@@ -59,7 +61,7 @@ export class Api {
               this.sensor = new SensorModel(
                 x.SensorDataID,
                 x.CareInfoID,
-                new Date(x.CreatedDate),
+                moment.utc(x.CreatedDate).toDate(),
                 x.SoilMoisture,
                 x.Light,
                 x.Temperature,
@@ -84,7 +86,7 @@ export class Api {
             console.log("this is the sorted sensor data");
             console.dir(this.sensordata);
 
-            console.log("Success : "+ result);
+            //console.log("Success : "+ result);
             resolve(this.sensordata);
           },
           err =>{

@@ -7,6 +7,7 @@ import { SensorModel } from '../../models/sensor'
 import { PlantModel } from '../../models/plant'
 
 import { Chart } from 'chart.js';
+import * as moment from 'moment';
 
 /**
  * Generated class for the PlantDetailModalPage page.
@@ -29,13 +30,14 @@ export class PlantDetailModalPage {
   filteredSensorData: SensorModel[] = [];
   filteredPlantData: PlantModel[] = [];
   chartData: {x: Date, y: number}[] = [];
+  sensordata: SensorModel[];
+  onPage: boolean;
 
   tooltiplabel: string;
   yaxislabel: string;
   measureunits: string;
   measureticks: any;
   customcallback: any;
-
 
   constructor(public app: App, public api: Api, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
     this.measure = this.navParams.get('measure');
@@ -44,6 +46,47 @@ export class PlantDetailModalPage {
     this.filteredPlantData = this.navParams.get('plantdata');
     console.dir(navParams);
     //this.refresh();
+    this.onPage = true;
+    this.realTimeDataProcess();
+  }
+
+  refreshPageModels() {
+    console.log("refreshing sensor data models on this plant detail modal");
+    // Get plant and sensor data for just this particular careID (plant)
+    //this.filteredPlantData = [];
+    this.filteredSensorData = [];
+    for (let plant of this.sensordata) {
+      if (plant.CareInfoID == this.careID) {
+        this.filteredSensorData.push(plant)
+      }
+    }
+  }
+
+  realTimeDataProcess() {
+    setTimeout(() => {
+      console.log("RUNNING BACKGROUND ASYNC PROCESS");
+      this.api.getSensorDataAsync().then((res) => {
+        this.sensordata = res;
+        this.refreshPageModels();
+        this.createDataObject();
+        this.drawChart();
+        this.checkIfStillOnPage();
+      });
+    }, 10000);
+  };
+  checkIfStillOnPage() {
+    console.log("run second delayer");
+    if (this.onPage) {
+      this.realTimeDataProcess();
+    }
+  }
+
+  ionViewDidEnter() {
+    this.onPage = true;
+  }
+
+  ionViewDidLeave() {
+    this.onPage = false;
   }
 
   createDataObject() {
@@ -54,6 +97,7 @@ export class PlantDetailModalPage {
 
     console.dir(this.filteredSensorData);
 
+    this.chartData = [];
     switch(this.measure) {
       case "Soil Moisture":
         for (let datapt of this.filteredSensorData) {
@@ -79,7 +123,7 @@ export class PlantDetailModalPage {
             //console.dir(tooltipItem[0]);
             //console.dir(data);
             let date = tooltipItem[0].xLabel;
-            let datestring = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " on " + (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+            let datestring = moment(date).format('MMM DD, YYYY h:mm:ss A');
             return datestring;
           }
         }
@@ -108,7 +152,7 @@ export class PlantDetailModalPage {
             //console.dir(tooltipItem[0]);
             //console.dir(data);
             let date = tooltipItem[0].xLabel;
-            let datestring = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " on " + (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+            let datestring = moment(date).format('MMM DD, YYYY h:mm:ss A');
             return datestring;
           }
         }
@@ -134,7 +178,7 @@ export class PlantDetailModalPage {
             //console.dir(tooltipItem[0]);
             //console.dir(data);
             let date = tooltipItem[0].xLabel;
-            let datestring = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " on " + (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+            let datestring = moment(date).format('MMM DD, YYYY h:mm:ss A');
             return datestring;
           }
         }
@@ -163,14 +207,13 @@ export class PlantDetailModalPage {
             //console.dir(tooltipItem[0]);
             //console.dir(data);
             let date = tooltipItem[0].xLabel;
-            let datestring = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " on " + (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+            let datestring = moment(date).format('MMM DD, YYYY h:mm:ss A');
             return datestring;
           }
         }
         break;
 
     }
-
 
     console.log("chart data:");
     console.dir(this.chartData);
@@ -197,14 +240,11 @@ export class PlantDetailModalPage {
   }*/
 
   closeModal() {
+    this.onPage = false;
     this.viewCtrl.dismiss();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PlantDetailModalPage');
-
-    this.createDataObject();
-
+  drawChart() {
     Chart.defaults.global.defaultFontColor = '#FFF';
     var config = {
       type: 'line',
@@ -221,6 +261,9 @@ export class PlantDetailModalPage {
         }]
       },
       options: {
+        animation: {
+          duration: 0
+        },
         responsive: true,
         title:{
           display:false,
@@ -249,6 +292,7 @@ export class PlantDetailModalPage {
               //unit: 'day',
               //unitStepSize: 6
               //tooltipFormat: 'MMM D, hA'
+
             }
           }],
           yAxes: [{
@@ -264,7 +308,14 @@ export class PlantDetailModalPage {
     };
 
     this.lineChart = new Chart(this.lineCanvas.nativeElement, config);
+  }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad PlantDetailModalPage');
+
+    this.createDataObject();
+
+    this.drawChart();
     /*this.lineChart = new Chart(this.lineCanvas.nativeElement, {
 
       type: 'line',

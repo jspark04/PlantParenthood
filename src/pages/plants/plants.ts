@@ -28,17 +28,23 @@ export class PlantsPage {
 
   monitoringPlants: PlantModel[] = [];
   notmonitoringPlants: PlantModel[] = [];
-
-
+  onPage: boolean;
 
   constructor(public app: App, public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api) {
     //this.monitoringPlants = null;
     //this.notmonitoringPlants = null;
 
+    this.onPage = true;
+    this.realTimeDataProcess();
   }
 
   ionViewDidEnter() {
+    this.onPage = true;
     this.refreshList();
+  }
+
+  ionViewDidLeave() {
+    this.onPage = false;
   }
 
   /*presentPopover(myEvent) {
@@ -47,6 +53,21 @@ export class PlantsPage {
       ev: myEvent
     });
   }*/
+  realTimeDataProcess() {
+    setTimeout(() => {
+      console.log("RUNNING BACKGROUND ASYNC PROCESS");
+      this.api.getSensorDataAsync().then((res) => {
+        this.refreshList();
+        this.checkIfStillOnPage();
+      });
+    }, 10000);
+  };
+  checkIfStillOnPage() {
+    console.log("run second delayer");
+    if (this.onPage) {
+      this.realTimeDataProcess();
+    }
+  }
 
   refreshList() {
     this.monitoringPlants = [];

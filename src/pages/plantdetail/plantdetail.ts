@@ -14,6 +14,7 @@ import { SensorModel } from '../../models/sensor'
 import { PlantModel } from '../../models/plant'
 
 import { Chart } from 'chart.js';
+import * as moment from 'moment';
 
 /**
  * Generated class for the Plants page.
@@ -26,13 +27,6 @@ import { Chart } from 'chart.js';
   templateUrl: 'plantdetail.html',
 })
 export class PlantDetailPage {
-  @ViewChild('barCanvas') barCanvas;
-  @ViewChild('doughnutCanvas') doughnutCanvas;
-  @ViewChild('lineCanvas') lineCanvas;
-
-  barChart: any;
-  doughnutChart: any;
-  lineChart: any;
 
   sensordata: SensorModel[];
   plantdata: PlantModel[];
@@ -43,6 +37,8 @@ export class PlantDetailPage {
   mostRecentSensorData: SensorModel;
   lastUpdatedDateTime: string;
 
+  onPage: boolean;
+
   constructor(public modalCtrl: ModalController, public app: App, public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api, public navParams: NavParams) {
     //this.monitoringPlants = null;
     //this.notmonitoringPlants = null;
@@ -52,13 +48,38 @@ export class PlantDetailPage {
 
     this.refresh();
 
+    this.onPage = true;
+    this.realTimeDataProcess();
+
   }
 
   ionViewDidEnter() {
+    this.onPage = true;
     this.refresh();
   }
 
+  ionViewDidLeave() {
+    this.onPage = false;
+  }
+
+  realTimeDataProcess() {
+    setTimeout(() => {
+      console.log("RUNNING BACKGROUND ASYNC PROCESS");
+      this.api.getSensorDataAsync().then((res) => {
+        this.refresh();
+        this.checkIfStillOnPage();
+      });
+    }, 10000);
+  };
+  checkIfStillOnPage() {
+    console.log("run second delayer");
+    if (this.onPage) {
+      this.realTimeDataProcess();
+    }
+  }
+
   refresh() {
+    console.log("refreshing data models on this plant detail page");
     this.currentCareID = this.navParams.get('careID');
 
     // Get plant and sensor data for just this particular careID (plant)
@@ -77,8 +98,7 @@ export class PlantDetailPage {
 
     this.mostRecentSensorData = this.filteredSensorData[this.filteredSensorData.length-1];
 
-    this.lastUpdatedDateTime = this.mostRecentSensorData.CreatedDate.getHours() + ":" + this.mostRecentSensorData.CreatedDate.getMinutes() + ":" + this.mostRecentSensorData.CreatedDate.getSeconds();
-    this.lastUpdatedDateTime = this.lastUpdatedDateTime + " on " + (this.mostRecentSensorData.CreatedDate.getMonth() + 1) + "/" + this.mostRecentSensorData.CreatedDate.getDate() + "/" + this.mostRecentSensorData.CreatedDate.getFullYear();
+    this.lastUpdatedDateTime = moment(this.mostRecentSensorData.CreatedDate).format('MMM DD, YYYY h:mm A');
 
   }
 
