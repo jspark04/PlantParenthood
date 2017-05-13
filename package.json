@@ -1,5 +1,5 @@
 {
-  "name": "plant-parenthood",
+  "name": "Twig",
   "version": "0.1.0",
   "author": "John Park",
   "homepage": "https://github.com/jspark04/PlantParenthood",
@@ -44,5 +44,5 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "Plant Parenthood: Description Here"
+  "description": "Twig: An IoT Plant Care System"
 }

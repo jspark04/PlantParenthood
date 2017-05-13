@@ -28,7 +28,7 @@
   <div class="plant-box" *ngFor="let plant of notmonitoringPlants">
     <ion-row>
       <ion-col col-4 text-center class="plant-col">
-        <span class="helper"></span><img src="./assets/img/plant1.png" class="status-disconnected">
+        <span class="helper"></span><img src={{plant.ImageURL}} class="status-disconnected">
       </ion-col>
       <ion-col col-8 class="plant-info-col">
         <div>

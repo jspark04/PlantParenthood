@@ -111,7 +111,7 @@ export class PlantDetailModalPage {
           })
         }
         this.measureunits = "%";
-        this.yaxislabel = "Soil Moisture Level";
+        this.yaxislabel = "Moisture Level";
         this.measureticks = {
           min: 0,
           max: 100
@@ -168,7 +168,7 @@ export class PlantDetailModalPage {
             y: datapt.Temperature
           })
         }
-        this.measureunits = "deg. C";
+        this.measureunits = "C";
         this.yaxislabel = "Temperature";
         this.measureticks = {};
         this.customcallback = {

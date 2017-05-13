@@ -39,6 +39,10 @@ export class PlantDetailPage {
 
   onPage: boolean;
 
+  autocaringEnabled: boolean = false;
+  autowaterEnabled: boolean = false;
+  autolightEnabled: boolean = false;
+
   constructor(public modalCtrl: ModalController, public app: App, public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api, public navParams: NavParams) {
     //this.monitoringPlants = null;
     //this.notmonitoringPlants = null;

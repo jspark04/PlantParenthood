@@ -122,6 +122,9 @@ page-plantdetail {
       -webkit-margin-start: 0px;
       -webkit-margin-end: 0px;
     }
+    .active-care {
+      border-color: map_get($colors, ppteal) !important;
+    }
     button {
       width: 80px;
       height: 80px;
@@ -174,9 +177,13 @@ page-plantdetail {
       margin: 5px;
 
       .measurement-name-box {
-        display: grid;
+        //display: grid;
         align-items:center;
         text-align: center;
+
+        img {
+          width: 40%;
+        }
 
         ion-icon {
           font-size: 2em;

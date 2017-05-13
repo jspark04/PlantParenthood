@@ -79,12 +79,12 @@
       </h1>
     </ion-row>
     <ion-row>
-      <ion-col col-10><h2>Automatic caring</h2></ion-col>
-      <ion-col col-2 id="toggle-col"><ion-toggle checked="false"></ion-toggle></ion-col>
+      <ion-col col-10><h2>Automatic caring {{autocaringEnabled ? "enabled" : "disabled"}}</h2></ion-col>
+      <ion-col col-2 id="toggle-col"><ion-toggle checked="false" [(ngModel)]="autocaringEnabled"></ion-toggle></ion-col>
     </ion-row>
     <ion-row>
-      <ion-col><button ion-button outline><ion-icon name="ios-water-outline"></ion-icon><span class="button-label">Water</span></button>
-      <button ion-button outline><ion-icon name="ios-sunny-outline" color="ppyellow"></ion-icon><span class="button-label">Light</span></button></ion-col>
+      <ion-col><button ion-button outline [ngClass]="{'active-care': autocaringEnabled && autowaterEnabled }" (click)="autowaterEnabled = !autowaterEnabled;"><ion-icon name="ios-water-outline"></ion-icon><span class="button-label">Water</span></button>
+      <button ion-button outline [ngClass]="{'active-care': autocaringEnabled && autolightEnabled }" (click)="autolightEnabled = !autolightEnabled;"><ion-icon name="ios-sunny-outline" color="ppyellow"></ion-icon><span class="button-label">Light</span></button></ion-col>
     </ion-row>
   </div>
 
@@ -100,7 +100,8 @@
 
     <ion-row class="measurement-box" (click)="openModal('Soil Moisture', currentCareID, filteredSensorData, filteredPlantData)">
       <ion-col col-3 class="measurement-name-box">
-        <ion-icon name="ios-water-outline"></ion-icon>
+        <!--<ion-icon name="ios-water-outline"></ion-icon>-->
+        <img src="./assets/img/moisture.png">
         <span class="measurement-name">Moisture</span>
       </ion-col>
       <ion-col col-6 class="measurement-bar-box">
@@ -113,8 +114,8 @@
 
     <ion-row class="measurement-box" (click)="openModal('Light', currentCareID, filteredSensorData, filteredPlantData)">
       <ion-col col-3 class="measurement-name-box">
-        <ion-icon name="ios-sunny-outline"></ion-icon>
-        <span class="measurement-name">Light</span>
+        <img src="./assets/img/light.png">
+        <br><span class="measurement-name">Light</span>
       </ion-col>
       <ion-col col-6 class="measurement-bar-box">
         <progress-bar [progress]="mostRecentSensorData.Light"></progress-bar>
@@ -127,8 +128,8 @@
 
     <ion-row class="measurement-box" (click)="openModal('Temperature', currentCareID, filteredSensorData, filteredPlantData)">
       <ion-col col-3 class="measurement-name-box">
-        <ion-icon name="ios-thermometer-outline"></ion-icon>
-        <span class="measurement-name">Temp</span>
+        <img src="./assets/img/temperature.png">
+        <br><span class="measurement-name">Temp</span>
       </ion-col>
       <ion-col col-6 class="measurement-bar-box">
         <progress-bar [progress]="((1-(45-mostRecentSensorData.Temperature)/45)*100)" [ideal]="((1-(45-filteredPlantData[0].Temperature)/45)*100)"></progress-bar>
@@ -140,7 +141,7 @@
 
     <ion-row class="measurement-box"  (click)="openModal('Humidity', currentCareID, filteredSensorData, filteredPlantData)">
       <ion-col col-3 class="measurement-name-box">
-        <ion-icon name="ios-speedometer-outline"></ion-icon>
+        <img src="./assets/img/humidity.png">
         <span class="measurement-name">Humidity</span>
       </ion-col>
       <ion-col col-6 class="measurement-bar-box">

@@ -19,7 +19,7 @@
     "Humidity": 20,
     "Owned": true,
     "Current": false,
-    "ImageURL": "./assets/img/plant1.png"
+    "ImageURL": "./assets/img/lavender.jpg"
   },
   {
     "CareInfoID": 3,
@@ -30,6 +30,6 @@
     "Humidity": 20,
     "Owned": true,
     "Current": false,
-    "ImageURL": "./assets/img/plant1.png"
+    "ImageURL": "./assets/img/africanviolet.jpg"
   }
 ]
