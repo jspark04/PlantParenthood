@@ -32,6 +32,8 @@ export class PlantDetailModalPage {
   chartData: {x: Date, y: number}[] = [];
   sensordata: SensorModel[];
   onPage: boolean;
+  suggestions: string[] = [];
+  condition: string = "";
 
   tooltiplabel: string;
   yaxislabel: string;
@@ -98,6 +100,8 @@ export class PlantDetailModalPage {
     console.dir(this.filteredSensorData);
 
     this.chartData = [];
+    this.suggestions = this.api.getSuggestions(this.filteredPlantData[0], this.filteredSensorData, this.measure);
+    this.condition = this.api.getConditionSpecificMeasure(this.filteredPlantData[0], this.filteredSensorData, this.measure);
     switch(this.measure) {
       case "Soil Moisture":
         for (let datapt of this.filteredSensorData) {

@@ -25,6 +25,9 @@ export class HomePage {
   numPlants: number = 0;
   numDevices: number = 0;
   onPage: boolean;
+  notifications: string[] = [];
+
+  autoCareEnabled: boolean = false;
 
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api) {
 
@@ -51,6 +54,12 @@ export class HomePage {
         this.numPlants = this.monitoringPlants.length;
         this.numDevices = this.api.devicedata.length;
 
+        this.notifications = [];
+        for (let plant of this.monitoringPlants) {
+          for (let notif of this.api.checkNotifications(this.monitoringPlants[0])) {
+            this.notifications.push(notif);
+          }
+        }
       });
 
   }
@@ -79,6 +88,9 @@ export class HomePage {
     this.onPage = false;
   }
 
+  suggestionsGenerator() {
+
+  }
 
 
   ionViewDidLoad() {

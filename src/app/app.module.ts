@@ -11,6 +11,7 @@ import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { PopOverAlert } from '../pages/popoveralert/popoveralert';
 import { PlantsPage } from '../pages/plants/plants';
+import { SettingsPage } from '../pages/settings/settings';
 import {PlantDetailPage} from "../pages/plantdetail/plantdetail";
 import { PlantDetailModalPage } from "../pages/plant-detail-modal-page/plant-detail-modal-page";
 
@@ -38,7 +39,8 @@ let pages = [
   PlantDetailPage,
   ProgressBar,
   MainHeader,
-  PlantDetailModalPage
+  PlantDetailModalPage,
+  SettingsPage
 ];
 
 export function providers() {

@@ -29,7 +29,7 @@
       {{measure}}
     </h1>
     <h2>
-      Good
+      {{condition}}
     </h2>
   </div>
   <div class="graph-section">
@@ -39,10 +39,10 @@
     <h2>
       Suggestions
     </h2>
-    <div class="suggestion-box">
+    <div class="suggestion-box" *ngFor="let suggestion of suggestions">
       <ul>
         <li>
-          List item 1
+          {{suggestion}}
         </li>
       </ul>
     </div>

@@ -44,10 +44,10 @@ page-plants {
       color: map_get($colors, ppteal) !important;
     }
     h2.status-yellow {
-      color: map_get($colors, ppteal) !important;
+      color: map_get($colors, ppyellow) !important;
     }
     h2.status-red {
-      color: map_get($colors, ppteal) !important;
+      color: map_get($colors, ppred) !important;
     }
     h2.status-disconnected {
       color: map_get($colors, pplightgrey) !important;
@@ -74,6 +74,16 @@ page-plants {
     img.status-green {
       border: 3px;
       border-color: map_get($colors, ppteal);
+      border-style: solid;
+    }
+    img.status-yellow {
+      border: 3px;
+      border-color: map_get($colors, ppyellow);
+      border-style: solid;
+    }
+    img.status-red {
+      border: 3px;
+      border-color: map_get($colors, ppred);
       border-style: solid;
     }
     img.status-disconnected {

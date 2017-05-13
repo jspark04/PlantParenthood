@@ -6,7 +6,8 @@ export class DeviceModel {
     public DeviceName: string,
     public DeviceType: string,
     public CreatedDate: Date,
-    public BatteryLevel: number
+    public BatteryLevel: number,
+    public ImageURL: string
   ) {}
 
 

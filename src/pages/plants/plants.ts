@@ -29,6 +29,8 @@ export class PlantsPage {
   monitoringPlants: PlantModel[] = [];
   notmonitoringPlants: PlantModel[] = [];
   onPage: boolean;
+  filteredSensorData: SensorModel[] = [];
+  mostRecentSensorData: SensorModel;
 
   constructor(public app: App, public navCtrl: NavController, public popoverCtrl: PopoverController, public api: Api) {
     //this.monitoringPlants = null;
@@ -57,6 +59,7 @@ export class PlantsPage {
     setTimeout(() => {
       console.log("RUNNING BACKGROUND ASYNC PROCESS");
       this.api.getSensorDataAsync().then((res) => {
+        this.sensordata = res;
         this.refreshList();
         this.checkIfStillOnPage();
       });
@@ -90,5 +93,7 @@ export class PlantsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Plants');
   }
+
+
 
 }

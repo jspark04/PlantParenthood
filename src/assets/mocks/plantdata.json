@@ -1,32 +1,35 @@
 [
   {
     "CareInfoID": 1,
-    "PlantName": "Rosemary",
-    "SoilMoisture": 60,
-    "Light": 800,
-    "Temperature": 20,
-    "Humidity": 60,
+    "PlantName": "Bamboo Palm",
+    "SoilMoisture": 70,
+    "Light": 700,
+    "Temperature": 21,
+    "Humidity": 20,
     "Owned": true,
-    "Current": true
+    "Current": true,
+    "ImageURL": "./assets/img/plant2.jpg"
   },
   {
     "CareInfoID": 2,
     "PlantName": "Lavender",
     "SoilMoisture": 60,
-    "Light": 100,
+    "Light": 600,
     "Temperature": 60,
     "Humidity": 20,
     "Owned": true,
-    "Current": false
+    "Current": false,
+    "ImageURL": "./assets/img/plant1.png"
   },
   {
     "CareInfoID": 3,
-    "PlantName": "Basil",
+    "PlantName": "African Violet",
     "SoilMoisture": 60,
     "Light": 100,
     "Temperature": 60,
     "Humidity": 20,
     "Owned": true,
-    "Current": true
+    "Current": false,
+    "ImageURL": "./assets/img/plant1.png"
   }
 ]

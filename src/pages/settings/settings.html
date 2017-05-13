@@ -1,0 +1,32 @@
+<ion-header id="header-main">
+  <main-header></main-header>
+</ion-header>
+
+<ion-content padding>
+
+
+    <ion-card>
+      <ion-card-header>
+        App Settings
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngFor="let setting of appSettings">{{setting.Name}}: {{setting.Value}}</p>
+      </ion-card-content>
+    </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Configure Settings
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button (click)="updateSetting(this.twilioEnabled.AppSettingsID, this.twilioEnabled.Name, this.twilioEnabled.Value)">Toggle Twilio</button>
+      <ion-item>
+        <ion-label stacked>Twilio Phone Number (format: 10-digit number)</ion-label>
+        <ion-input type="text" [(ngModel)]="phonenuminput"></ion-input>
+
+      </ion-item>
+      <button ion-button (click)="updateSetting(this.twilioPhoneNum.AppSettingsID, this.twilioPhoneNum.Name, this.phonenuminput)">Update Twilio Number</button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

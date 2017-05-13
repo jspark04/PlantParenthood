@@ -11,7 +11,7 @@
   <div class="plant-box" *ngFor="let device of extendeddevicedata">
     <ion-row>
       <ion-col col-4 text-center class="plant-col">
-        <span class="helper"></span><img src="./assets/img/device1.png" class="status-green">
+        <span class="helper"></span><img src={{device.device.ImageURL}} class="status-green">
       </ion-col>
       <ion-col col-8 class="plant-info-col">
         <div>

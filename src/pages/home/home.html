@@ -5,43 +5,26 @@
 <ion-content padding>
   <div class="top-content">
     <h1>Good morning, Tom!</h1>
-    <p>You have {{numPlants}} plants and {{numDevices}} devices connected. Everything looks great today!</p>
+    <p>You have {{numPlants}} plants and {{numDevices}} devices connected. Your plants are looking fabulous today, but some may require your attention.</p>
   </div>
 
   <div class="automatic-caring">
       <ion-row>
-        <ion-col col-10><h2>Automatic caring</h2></ion-col>
-        <ion-col col-2><ion-toggle checked="false"></ion-toggle></ion-col>
+        <ion-col col-10 class="auto-caring-title"><h2>Automatic caring</h2></ion-col>
+        <ion-col col-2><ion-toggle checked="false" [(ngModel)]="autoCareEnabled"></ion-toggle></ion-col>
       </ion-row>
   </div>
 
-  <div class="content-placeholder"></div>
+  <div class="content-placeholder">
+    <img src="./assets/img/sensoronly.png" *ngIf="!autoCareEnabled">
+    <img src="./assets/img/autocare.png" *ngIf="autoCareEnabled">
+  </div>
 
   <div class="notifications-section">
     <h2>Notifications</h2>
-    <div class="notification">
-      <p text-center>You don't have any new notifications.</p>
+    <div class="notification" *ngFor="let notif of notifications">
+      <p text-center>{{notif}}</p>
     </div>
   </div>
 
-  <p>
-
-    Dev testing section
-  </p>
-
-  <button ion-button (click)="getSensorData()">Get Sensor Data</button>
-  <button ion-button (click)="getPlantData()">Get Plant Data</button>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
-
-  <ion-list>
-    <button ion-item *ngFor="let datapt of sensordata">
-      {{ datapt.SensorDataID }}
-    </button>
-  </ion-list>
-  <ion-list>
-    <button ion-item *ngFor="let datapt of plantdata">
-      {{ datapt.PlantName }}
-    </button>
-  </ion-list>
 </ion-content>

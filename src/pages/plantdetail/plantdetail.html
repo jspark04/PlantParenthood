@@ -59,15 +59,15 @@
     <ion-row>
       <ion-col col-9 class="plant-info-col">
         <div>
-          <h1>{{filteredPlantData[0].PlantName}}
-            <span id="plant-condition" class="status-green">&nbsp;Good</span></h1>
+          <h1>{{filteredPlantData[0].PlantName}}</h1>
+           <!-- <br><span id="plant-condition" class="status-green">&nbsp;{{this.api.checkConditionShortText(filteredPlantData[0])}}</span></h1>-->
           <p>
-            Your {{filteredPlantData[0].PlantName.toLowerCase()}} looks great!
+            Your {{filteredPlantData[0].PlantName.toLowerCase()}} {{this.api.checkConditionLongText(filteredPlantData[0])}}
           </p>
         </div>
       </ion-col>
       <ion-col col-3 text-center class="plant-col">
-        <span class="helper"></span><img src="./assets/img/plant1.png" class="status-green">
+        <span class="helper"></span><img src={{filteredPlantData[0].ImageURL}} class="status-green">
       </ion-col>
     </ion-row>
   </div>
@@ -118,6 +118,7 @@
       </ion-col>
       <ion-col col-6 class="measurement-bar-box">
         <progress-bar [progress]="mostRecentSensorData.Light"></progress-bar>
+        <span class="average-light-text">Averaging {{mostRecentSensorData.LightSumDay/100}} hours of direct sunlight per day</span>
       </ion-col>
       <ion-col col-3 class="measurement-value-box">
         <span class="measurement-value">{{mostRecentSensorData.Light}}%<ion-icon name="ios-arrow-forward-outline" class="forward-arrow"></ion-icon></span>
@@ -130,7 +131,7 @@
         <span class="measurement-name">Temp</span>
       </ion-col>
       <ion-col col-6 class="measurement-bar-box">
-        <progress-bar [progress]="mostRecentSensorData.Temperature" [ideal]="filteredPlantData[0].Temperature"></progress-bar>
+        <progress-bar [progress]="((1-(45-mostRecentSensorData.Temperature)/45)*100)" [ideal]="((1-(45-filteredPlantData[0].Temperature)/45)*100)"></progress-bar>
       </ion-col>
       <ion-col col-3 class="measurement-value-box">
         <span class="measurement-value">{{mostRecentSensorData.Temperature}}<span class="degree-units">&deg;C</span><ion-icon name="ios-arrow-forward-outline" class="forward-arrow"></ion-icon></span>

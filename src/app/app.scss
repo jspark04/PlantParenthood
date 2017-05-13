@@ -79,6 +79,55 @@ $open-sans: 'Open Sans', sans-serif;
   max-height: 2px;
   min-height: 2px;
 }
+/*
+.header-md::after,
+.tabs-md[tabsPlacement="top"] > .tabbar::after,
+.footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+  background-image: none;
+  //@include linear-gradient(to right, map-get($colors, gradientleft), map-get($colors, gradientright));
+}*/
+
+.menu-header {
+
+
+  .toolbar-content {
+    display: inherit;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    @include border-radius(50%);
+    margin: 5px;
+  }
+
+  h1 {
+    margin: 0;
+    padding-top: 16px;
+    margin-left: 15px;
+    font-size: 1.5em;
+    color: white;
+    font-weight: 300;
+  }
+}
+
+.menu-items {
+  button {
+    background-color: map_get($colors, bgdarkgreen);
+    color: white;
+    font-weight: 300;
+    padding-left: 0;
+    .input-wrapper {
+      padding-left: 5em;
+    }
+  }
+  .item-md.item-block .item-inner {
+    border-color: map_get($colors, bglightgreen);
+  }
+}
+.menu-content-custom {
+  background-color: map_get($colors, bgdarkgreen);
+}
 
 // App Global Sass
 // --------------------------------------------------

@@ -156,6 +156,11 @@ page-plantdetail {
   .overview {
     padding-top: 35px;
 
+    .average-light-text {
+      font-size: 0.8em;
+      font-weight: 300;
+    }
+
     .last-updated {
       margin-left: 5px;
       color: map_get($colors, pplightgrey);

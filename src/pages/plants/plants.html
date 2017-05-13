@@ -11,15 +11,15 @@
   <div class="plant-box" *ngFor="let plant of monitoringPlants" (click)="viewPlantDetails(plant.CareInfoID)">
     <ion-row>
       <ion-col col-4 text-center class="plant-col">
-        <span class="helper"></span><img src="./assets/img/plant1.png" class="status-green">
+        <span class="helper"></span><img src={{plant.ImageURL}} class="{{this.api.checkConditionShortStatusColor(plant)}}">
       </ion-col>
       <ion-col col-8 class="plant-info-col">
         <div>
           <h1>{{plant.PlantName}}</h1>
-          <h2 class="status-green">Good</h2>
+          <h2 class="{{this.api.checkConditionShortStatusColor(plant)}}">{{this.api.checkConditionShortText(plant)}}</h2>
           <p>
             Connected with:<br>
-            Twig 1, Rain 1
+            Twig 1, Rain 1, Shine 1
           </p>
         </div>
       </ion-col>

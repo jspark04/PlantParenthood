@@ -11,7 +11,8 @@ export class PlantModel {
     public Temperature: number,
     public Humidity: number,
     public Owned: boolean,
-    public Current: boolean
+    public Current: boolean,
+    public ImageURL: string
   ) {}
 
 
